@@ -9,7 +9,7 @@ import { ChatProvider  } from "../context/ChatContext";
 const pacifico = Pacifico({
   weight: "400",
   subsets: ["latin"],
-  variable: "--font-pacifico", // for Tailwind
+  variable: "--font-pacifico",
 });
 export const metadata: Metadata = {
   title: "Create Next App",

@@ -20,8 +20,8 @@ const messagesEndRef = useRef<HTMLDivElement>(null);
         const checkScreen = () => {
             setIsMobile(window.innerWidth < 768);
         };
-        checkScreen(); // Run on mount
-        window.addEventListener("resize", checkScreen); // Listen for changes
+        checkScreen(); 
+        window.addEventListener("resize", checkScreen); 
         return () => window.removeEventListener("resize", checkScreen);
     }, []);
 
@@ -32,7 +32,6 @@ useEffect(() => {
   }
 }, [selectedContact?.messages]);
 
-    // If mobile and chat is open, don't render sidebar
     if (isMobile && !isChatOpen) return null;
 
 
@@ -61,7 +60,6 @@ useEffect(() => {
         setSelectedContactId(updatedContact.id);
         setValue("");
 
-        // ⏱️ Add delay for received message
         setTimeout(() => {
             const randomIndex = Math.floor(Math.random() * randomMessages.length);
             const receivedMessage = {
@@ -71,8 +69,6 @@ useEffect(() => {
                 type: "received",
             };
 
-            // ✅ Use callback to get the latest contacts state
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             setContacts((prevContacts: any[]) => {
                 const contactAfterReply = prevContacts.find(c => c.id === updatedContact.id);
                 if (!contactAfterReply) return prevContacts;
@@ -87,7 +83,6 @@ useEffect(() => {
                     ...prevContacts.filter(c => c.id !== updatedAfterReply.id),
                 ];
 
-                // Also keep selected contact updated
                 setSelectedContactId(updatedAfterReply.id);
                 return reordered;
             });
@@ -120,7 +115,7 @@ useEffect(() => {
                     {isMobile && (
                         <button
                             onClick={() => {
-                                setIsChatOpen(false); // deselect
+                                setIsChatOpen(false); 
                             }}
                             className="text-[#4b46e1] font-semibold text-[16px] px-4"
                         >

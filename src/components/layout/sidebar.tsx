@@ -12,12 +12,12 @@ export function SideBar() {
     const checkScreen = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    checkScreen(); // Run on mount
+    checkScreen(); 
     window.addEventListener("resize", checkScreen); // Listen for changes
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
-  // If mobile and chat is open, don't render sidebar
+  
   if (isMobile && isChatOpen) return null;
 
   return (
