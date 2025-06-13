@@ -1,18 +1,9 @@
 import { Navbar } from "@/components/layout/navbar";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Pacifico } from "next/font/google";
+import { Pacifico } from "next/font/google";
 import "./globals.css"
 import { SideBar } from "@/components/layout/sidebar";
-import { ChatProvider , useChat } from "../context/ChatContext";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { ChatProvider  } from "../context/ChatContext";
 
 
 const pacifico = Pacifico({

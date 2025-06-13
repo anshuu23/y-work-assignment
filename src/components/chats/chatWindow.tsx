@@ -2,7 +2,7 @@
 import { useState, useEffect , useRef } from "react";
 import { SendBtnSvg } from "../svg/sendBtnSvg";
 import { useChat } from "@/context/ChatContext";
-import { dummyChatData, randomMessages } from "@/app/lib/chatData";
+import { Message, randomMessages } from "@/app/lib/chatData";
 import { v4 as uuidv4 } from 'uuid';
 
 export default function ChatWindow() {
@@ -12,8 +12,6 @@ const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const { setContacts, contacts, setSelectedContactId, selectedContactId, isChatOpen, setIsChatOpen } = useChat();
     const [value, setValue] = useState("")
-    const [res, setRes] = useState("hii")
-    //selectedContact?.messages.push({ id: 'm1', text: 'k99999Hey!', time: '10:00 AM', type: 'received' },)
     const selectedContact = contacts.find(c => c.id === selectedContactId);
 
     const [isMobile, setIsMobile] = useState(false);
@@ -74,6 +72,7 @@ useEffect(() => {
             };
 
             // ✅ Use callback to get the latest contacts state
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             setContacts((prevContacts: any[]) => {
                 const contactAfterReply = prevContacts.find(c => c.id === updatedContact.id);
                 if (!contactAfterReply) return prevContacts;
@@ -136,9 +135,9 @@ useEffect(() => {
             <div className=" p-4  border-b-2 border-[#d5d5d5] overflow-y-scroll " id="chat-scroll-box">
 
                 {
-                    selectedContact?.messages.map((message) => {
+                    selectedContact?.messages.map((message : Message) => {
                         return (
-                            <div className={message.type == "sent" ? "right" : "left"}>
+                            <div key={message.id} className={message.type == "sent" ? "right" : "left"}>
                                 <div className={message.type == "sent" ? "right-msg" : "left-msg"}>
                                     {message.text}
                                 </div>

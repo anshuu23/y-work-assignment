@@ -4,6 +4,7 @@ import { dummyChatData, Contact } from '../app/lib/chatData';
 
 type ChatContextType = {
   contacts: Contact[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setContacts: React.Dispatch<React.SetStateAction<Contact[]>> | any;
   selectedContactId: string | null;
   setSelectedContactId: React.Dispatch<React.SetStateAction<string | null>>;
@@ -14,6 +15,7 @@ type ChatContextType = {
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
 
 export const ChatProvider = ({ children }: { children: React.ReactNode }) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [contacts, setContacts] = useState<Contact[] | any>(dummyChatData);
   const [selectedContactId, setSelectedContactId] = useState<string | null>(
     dummyChatData[dummyChatData.length - 1].id

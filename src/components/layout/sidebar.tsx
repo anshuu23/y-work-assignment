@@ -4,7 +4,7 @@ import { useChat } from "@/context/ChatContext";
 import { useEffect, useState } from "react";
 
 export function SideBar() {
-  const { contacts, setSelectedContactId, isChatOpen } = useChat();
+  const { contacts, isChatOpen } = useChat();
 
   const [isMobile, setIsMobile] = useState(false);
 

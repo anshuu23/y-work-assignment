@@ -37,7 +37,7 @@ export function ContactItem({ name, lastMessage, timestamp, initials, id }: Cont
     <div>
       <div
         className="p-3 flex gap-2.5 cursor-pointer hover:bg-zinc-100"
-        onClick={() => {setSelectedContactId(id) , setIsChatOpen(true)}}
+        onClick={() => {setSelectedContactId(id) ; setIsChatOpen(true)}}
       >
         <div className={`${bg} ${text} rounded-4xl h-[50px] w-[60px] flex justify-center items-center `}>
           {initials}
