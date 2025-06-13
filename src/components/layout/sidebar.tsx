@@ -28,7 +28,7 @@ export function SideBar() {
       <div className="overflow-y-scroll h-[calc(100vh-120px)]">
         {contacts.map((contact) => (
           <ContactItem
-            key={contact.id}
+            key={contact.id} 
             name={contact.name}
             lastMessage={contact.messages[contact.messages.length - 1]?.text || ""}
             timestamp={contact.messages[contact.messages.length - 1]?.time || ""}
